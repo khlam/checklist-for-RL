@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+    paper:        
+        image: ghcr.io/khlam/latexmk/latexmk:latest
+
+        volumes:
+          - ./doc/:/app/
+        
+        command: bash -c "latexmk -pvc -pdf -view=none paper.tex"
+    
+    supp:        
+      image: ghcr.io/khlam/latexmk/latexmk:latest
+
+      volumes:
+        - ./doc/:/app/
+      
+      command: bash -c "latexmk -pvc -pdf -view=none supplemental.tex"
